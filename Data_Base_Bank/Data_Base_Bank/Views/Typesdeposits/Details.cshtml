@@ -1,0 +1,51 @@
+﻿@model Data_Base_Bank.Models.Typedeposit
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Typesdeposits" asp-action="Index">Back</a>
+</h3>
+<div>
+    <h4>Typedeposit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypedepositID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypedepositID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Minimumtermofdeposit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Minimumtermofdeposit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Minimumdepositamount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Minimumdepositamount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Interestrate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Interestrate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Additionalconditions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Additionalconditions)
+        </dd>
+    </dl>
+</div>
+

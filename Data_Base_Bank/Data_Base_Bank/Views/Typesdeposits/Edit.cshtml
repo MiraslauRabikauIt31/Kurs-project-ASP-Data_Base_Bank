@@ -1,0 +1,46 @@
+﻿@model Data_Base_Bank.Models.Typedeposit
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Typesdeposits" asp-action="Index">Back</a>
+</h3>
+
+<h2>Edit Typedeposit №@Model.TypedepositID</h2>
+
+@using (Html.BeginForm("Edit", "Typesdeposits", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(model => model.TypedepositID)
+        <p>
+            @Html.LabelFor(model => model.NameType, "Имя Типа")
+            <br />
+            @Html.EditorFor(model => model.NameType)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Minimumtermofdeposit, "Минимальный срок вклада")
+            <br />
+            @Html.EditorFor(model => model.Minimumtermofdeposit)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Minimumdepositamount, "Минимальная сумма вклада")
+            <br />
+            @Html.EditorFor(model => model.Minimumdepositamount)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Interestrate, "Процентная ставка")
+            <br />
+            @Html.EditorFor(model => model.Interestrate)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Additionalconditions, "Дополнительные условия")
+            <br />
+            @Html.EditorFor(model => model.Additionalconditions)
+        </p>
+        <p>
+            <input type="submit" value="Изменить" />
+        </p>
+    </fieldset>
+}
+

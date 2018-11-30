@@ -1,0 +1,38 @@
+﻿@model Data_Base_Bank.Models.Depositor
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Depositors" asp-action="Index">Back</a>
+</h3>
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.NameDep, "Имя Вкладчика")
+    <br />
+    @Html.EditorFor(model => model.NameDep)
+    <br /><br />
+    @Html.LabelFor(model => model.SurnameDep, "Фамилия Вкладчика")
+    <br />
+    @Html.EditorFor(model => model.SurnameDep)
+    <br /><br />
+    @Html.LabelFor(model => model.MiddlenameDep, "Отчество Вкладчика")
+    <br />
+    @Html.EditorFor(model => model.MiddlenameDep)
+    <br /><br />
+    @Html.LabelFor(model => model.Addres, "Адрес")
+    <br />
+    @Html.EditorFor(model => model.Addres)
+    <br /><br />
+    @Html.LabelFor(model => model.Phone, "Телефон")
+    <br />
+    @Html.EditorFor(model => model.Phone)
+    <br /><br />
+    @Html.LabelFor(model => model.Passportdata, "Паспортные данные")
+    <br />
+    @Html.EditorFor(model => model.Passportdata)
+    <br /><br />
+    <input type="submit" value="Добавть" />
+}

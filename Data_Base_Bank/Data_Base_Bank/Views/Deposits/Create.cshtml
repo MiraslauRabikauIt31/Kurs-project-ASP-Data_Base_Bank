@@ -1,0 +1,65 @@
+﻿@model Data_Base_Bank.Models.Deposit
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Deposits" asp-action="Index">Back</a>
+</h3>
+<h2>Create Deposit</h2>
+<div class="col-md-4">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CurrencyID" class="control-label"></label>
+            <select asp-for="CurrencyID" class="form-control" asp-items="ViewBag.CurrencyID">
+                <option>Выберите Валюту</option>
+            </select>
+            <span asp-validation-for="CurrencyID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DepositorID" class="control-label"></label>
+            <select asp-for="DepositorID" class="form-control" asp-items="ViewBag.DepositorID">
+                <option>Выберите Вкладчика</option>
+            </select>
+            <span asp-validation-for="DepositorID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TypedepositID" class="control-label"></label>
+            <select asp-for="TypedepositID" class="form-control" asp-items="ViewBag.TypedepositID">
+                <option>Выберите Тип вклада</option>
+            </select>
+            <span asp-validation-for="TypedepositID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmployeeID" class="control-label"></label>
+            <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.EmployeeID">
+                <option>Выберите Сотрудника</option>
+            </select>
+            <span asp-validation-for="EmployeeID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Depositsum" class="control-label"></label>
+            <input asp-for="Depositsum" class="form-control" />
+            <span asp-validation-for="Depositsum" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Datedeposit" class="control-label"></label>
+            <input asp-for="Datedeposit" class="form-control" />
+            <span asp-validation-for="Datedeposit" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Refundamount" class="control-label"></label>
+            <input asp-for="Refundamount" class="form-control" />
+            <span asp-validation-for="Refundamount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Datereturn" class="control-label"></label>
+            <input asp-for="Datereturn" class="form-control" />
+            <span asp-validation-for="Datereturn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Добавить" class="btn btn-default" />
+        </div>
+    </form>
+</div>

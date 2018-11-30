@@ -1,0 +1,47 @@
+﻿@model Data_Base_Bank.Models.Employee
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Employees" asp-action="Index">Back</a>
+</h3>
+
+<h2>Edit Employee № @Model.EmployeeID</h2>
+
+@using (Html.BeginForm("Edit", "Employees", FormMethod.Post))
+{
+<fieldset>
+    @Html.HiddenFor(model => model.EmployeeID)
+    <p>
+        @Html.LabelFor(model => model.NameEmpl, "Имя сотрудника")
+        <br />
+        @Html.EditorFor(model => model.NameEmpl)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.SurnameEmpl, "Фаимлия сотрудника")
+        <br />
+        @Html.EditorFor(model => model.SurnameEmpl)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.MiddlenameEmpl, "Отчество сотрудника")
+        <br />
+        @Html.EditorFor(model => model.MiddlenameEmpl)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Patronymic, "Должность")
+        <br />
+        @Html.EditorFor(model => model.Patronymic)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.DateofBirth, "Дата рождения")
+        <br />
+        @Html.EditorFor(model => model.DateofBirth)
+    </p>
+    <p>
+        <input type="submit" value="Изменить" />
+    </p>
+</fieldset>
+}
+

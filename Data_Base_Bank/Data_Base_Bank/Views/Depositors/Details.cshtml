@@ -1,0 +1,57 @@
+﻿@model  Data_Base_Bank.Models.Depositor
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Depositors" asp-action="Index">Back</a>
+</h3>
+
+<div>
+    <h4>Depositor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositorID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepositorID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameDep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameDep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SurnameDep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurnameDep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddlenameDep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MiddlenameDep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Addres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Addres)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Passportdata)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Passportdata)
+        </dd>
+    </dl>
+</div>

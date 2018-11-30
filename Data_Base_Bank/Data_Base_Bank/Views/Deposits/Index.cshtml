@@ -1,0 +1,114 @@
+﻿@using Data_Base_Bank.ViewModels.DepositsViewModel
+@model DepositsViewModel
+@addTagHelper "*, Data_Base_Bank"
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deposit</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Валюта: </label>
+        @Html.DropDownList("currency", Model.FilterViewModel.Currencies as SelectList, htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Вид вклада: </label>
+        @Html.DropDownList("typedeposit", Model.FilterViewModel.Typesdeposits as SelectList, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-default"/>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DespositIDSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.DespositID)</a>   
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.TypeCurrencySort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.NameCurrency)</a>    
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.TypeDepSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.NameDep)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.TypeTypedepSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.NameType)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.TypeEmployeeSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.NameEmpl)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DepositsumSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.Depositsum)</a>      
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DatedepositSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.Datedeposit)</a>      
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.RefundamountSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.Refundamount)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DatereturnSort)"
+               asp-route-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+               asp-route-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)">@Html.DisplayNameFor(model => model.DepositViewModel.Datereturn)</a>         
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Deposits)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DespositID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Currency.NameCurrency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depositor.NameDep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Typedeposit.NameType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.NameEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depositsum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datedeposit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Refundamount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datereturn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DespositID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DespositID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DespositID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+page-url-namecurrency="@(Model.FilterViewModel.SelectedCurrency)"
+page-url-typedeposit="@(Model.FilterViewModel.SelectedTypesdeposit)"
+page-url-sortorder="@(Model.SortViewModel.Current)" ></page-link>
+

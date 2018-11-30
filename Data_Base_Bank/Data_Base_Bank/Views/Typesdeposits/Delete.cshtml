@@ -1,0 +1,56 @@
+﻿@model Data_Base_Bank.Models.Typedeposit
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteTypedeposit</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Typedeposit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypedepositID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypedepositID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Minimumtermofdeposit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Minimumtermofdeposit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Minimumdepositamount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Minimumdepositamount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Interestrate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Interestrate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Additionalconditions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Additionalconditions)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

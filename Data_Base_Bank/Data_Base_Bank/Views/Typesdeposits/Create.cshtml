@@ -1,0 +1,35 @@
+﻿@model Data_Base_Bank.Models.Typedeposit
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Typesdeposits" asp-action="Index">Back</a>
+</h3>
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.NameType, "Имя Типа")
+    <br />
+    @Html.EditorFor(model => model.NameType)
+    <br /><br />
+    @Html.LabelFor(model => model.Minimumtermofdeposit, "Минимальный срок вклада")
+    <br />
+    @Html.EditorFor(model => model.Minimumtermofdeposit)
+    <br /><br />
+    @Html.LabelFor(model => model.Minimumdepositamount, "Минимальная сумма вклада")
+    <br />
+    @Html.EditorFor(model => model.Minimumdepositamount)
+    <br /><br />
+    @Html.LabelFor(model => model.Interestrate, "Процентная ставка")
+    <br />
+    @Html.EditorFor(model => model.Interestrate)
+    <br /><br />
+    @Html.LabelFor(model => model.Additionalconditions, "Дополнительные условия")
+    <br />
+    @Html.EditorFor(model => model.Additionalconditions)
+    <br /><br />
+    <input type="submit" value="Добавть" />
+}
+

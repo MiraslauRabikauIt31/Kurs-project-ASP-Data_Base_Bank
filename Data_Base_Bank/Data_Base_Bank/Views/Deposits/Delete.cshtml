@@ -1,0 +1,75 @@
+﻿@model Data_Base_Bank.ViewModels.DepositsViewModel.DepositsViewModel
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete Deposit</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>DepositViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposits.First().DespositID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().DespositID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositViewModel.NameCurrency)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Currency.NameCurrency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositViewModel.NameDep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Depositor.NameDep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositViewModel.NameType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Typedeposit.NameType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepositViewModel.NameEmpl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Employee.NameEmpl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposits.First().Depositsum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Depositsum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposits.First().Datedeposit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Datedeposit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposits.First().Refundamount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Refundamount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Deposits.First().Datereturn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposits.First().Datereturn)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

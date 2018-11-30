@@ -1,0 +1,94 @@
+﻿@using Data_Base_Bank.ViewModels.TypedepositsViewModel
+@model TypedepositsViewModel
+@addTagHelper "*, Data_Base_Bank"
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Typedeposit</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Тип вклада: </label>
+        @Html.TextBox("type", Model.FilterViewModel.SelectedType, htmlAttributes: new { @class = "form-control" })
+        <label class="control-label">Минимальный сумма: </label>
+        @Html.TextBox("depositamount", Model.FilterViewModel.Selectdepositamount, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn-default" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.TypedepositIDSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.TypedepositID)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.NameTypeSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.NameType)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.MinimumtermofdepositSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.Minimumtermofdeposit)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.MinimumdepositamountSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.Minimumdepositamount)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.InterestrateSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.Interestrate)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.AdditionalconditionsSort)"
+                   asp-route-type="@(Model.FilterViewModel.SelectedType)"
+                   asp-route-depositamount="@(Model.FilterViewModel.Selectdepositamount)">@Html.DisplayNameFor(model => model.Typedeposit.Additionalconditions)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Typedeposits)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypedepositID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Minimumtermofdeposit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Minimumdepositamount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Interestrate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Additionalconditions)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TypedepositID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TypedepositID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TypedepositID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-type="@(Model.FilterViewModel.SelectedType)"
+           page-url-depositamount="@(Model.FilterViewModel.Selectdepositamount)"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
+

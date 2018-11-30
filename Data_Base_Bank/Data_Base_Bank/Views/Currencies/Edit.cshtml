@@ -1,0 +1,34 @@
+﻿@model Data_Base_Bank.Models.Currency
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Currencies" asp-action="Index">Back</a>
+</h3>
+<h2>Edit Currency № @Model.CurrencyID</h2>
+@using (Html.BeginForm("Edit", "Currencies", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(c => c.CurrencyID)
+        <p>
+            @Html.LabelFor(c => c.NameCurrency, "Имя валюты")
+            <br />
+            @Html.EditorFor(c => c.NameCurrency)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.Exchangerate, "Обменный курс")
+            <br />
+            @Html.EditorFor(c => c.Exchangerate)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.date_, "Дата")
+            <br />
+            @Html.EditorFor(c => c.date_)
+        </p>
+        <p>
+            <input type="submit" value="Изменить"/>
+        </p>
+    </fieldset>
+}
+
