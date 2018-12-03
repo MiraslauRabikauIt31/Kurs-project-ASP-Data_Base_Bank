@@ -12226,11 +12226,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\фаис\\ИТ-31\\Курсовой проект\\Data_Base_Bank\\Data_Base_Bank\\Data_Base_Bank.csproj",
+      "projectUniqueName": "D:\\фаис\\ИТ-31\\РПБДИС\\Lab5\\Data_Base_Bank\\Data_Base_Bank\\Data_Base_Bank.csproj",
       "projectName": "Data_Base_Bank",
-      "projectPath": "D:\\фаис\\ИТ-31\\Курсовой проект\\Data_Base_Bank\\Data_Base_Bank\\Data_Base_Bank.csproj",
+      "projectPath": "D:\\фаис\\ИТ-31\\РПБДИС\\Lab5\\Data_Base_Bank\\Data_Base_Bank\\Data_Base_Bank.csproj",
       "packagesPath": "C:\\Users\\Наташа\\.nuget\\packages\\",
-      "outputPath": "D:\\фаис\\ИТ-31\\Курсовой проект\\Data_Base_Bank\\Data_Base_Bank\\obj\\",
+      "outputPath": "D:\\фаис\\ИТ-31\\РПБДИС\\Lab5\\Data_Base_Bank\\Data_Base_Bank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

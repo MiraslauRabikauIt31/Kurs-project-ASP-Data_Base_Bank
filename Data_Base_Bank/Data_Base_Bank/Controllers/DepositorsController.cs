@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Data_Base_Bank.Models;
 using Data_Base_Bank.ViewModels;
 using Data_Base_Bank.ViewModels.DepositorsViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Data_Base_Bank.Controllers
 {
+    [Authorize(Roles = "user, moder")]
     public class DepositorsController : Controller
     {
         private BankContext db;

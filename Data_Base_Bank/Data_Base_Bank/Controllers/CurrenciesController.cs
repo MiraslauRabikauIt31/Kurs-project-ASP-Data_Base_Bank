@@ -7,9 +7,11 @@ using Data_Base_Bank.Models;
 using Microsoft.EntityFrameworkCore;
 using Data_Base_Bank.ViewModels;
 using Data_Base_Bank.ViewModels.CurrenciesViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Data_Base_Bank.Controllers
 {
+    [Authorize(Roles = "user, moder")]
     public class CurrenciesController : Controller
     {
         private BankContext db;
@@ -147,9 +149,13 @@ namespace Data_Base_Bank.Controllers
         [HttpPost]
         public IActionResult Edit(Currency currency)
         {
-            db.Entry(currency).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                db.Entry(currency).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Data_Base_Bank.Models
     {
         public BankContext(DbContextOptions<BankContext> options) : base(options)
         {
+    
         }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Depositor> Depositors { get; set; }

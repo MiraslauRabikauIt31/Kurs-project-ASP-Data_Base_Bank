@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 using Data_Base_Bank.Models;
 using Data_Base_Bank.ViewModels;
 using Data_Base_Bank.ViewModels.DepositsViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Data_Base_Bank.Controllers
 {
+    [Authorize(Roles = "user, moder")]
     public class DepositsController : Controller
     {
         private BankContext db;

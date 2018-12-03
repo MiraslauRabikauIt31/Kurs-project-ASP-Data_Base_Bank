@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using Data_Base_Bank.Models;
 using Data_Base_Bank.ViewModels;
 using Data_Base_Bank.ViewModels.TypedepositsViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Data_Base_Bank.Controllers
 {
+    [Authorize(Roles = "user, moder")]
     public class TypesdepositsController : Controller
     {
         private BankContext db;

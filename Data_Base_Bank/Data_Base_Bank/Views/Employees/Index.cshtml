@@ -7,10 +7,12 @@
 }
 
 <h2>Employees</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (!User.IsInRole("user"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form method="get">
     <div class="form-inline">
         <label class="control-label">Имя: </label>
@@ -38,7 +40,7 @@
                    asp-route-patronymic="@(Model.FilterViewModel.SelectedPatronymic)">@Html.DisplayNameFor(model => model.Employee.NameEmpl)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.SurnameEmplSort)" 
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.SurnameEmplSort)"
                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
                    asp-route-surname="@(Model.FilterViewModel.SelectedSurname)"
                    asp-route-patronymic="@(Model.FilterViewModel.SelectedPatronymic)">@Html.DisplayNameFor(model => model.Employee.SurnameEmpl)</a>
@@ -56,7 +58,7 @@
                    asp-route-patronymic="@(Model.FilterViewModel.SelectedPatronymic)">@Html.DisplayNameFor(model => model.Employee.Patronymic)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DateofBirthSort)" 
+                <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DateofBirthSort)"
                    asp-route-name="@(Model.FilterViewModel.SelectedName)"
                    asp-route-surname="@(Model.FilterViewModel.SelectedSurname)"
                    asp-route-patronymic="@(Model.FilterViewModel.SelectedPatronymic)">@Html.DisplayNameFor(model => model.Employee.DateofBirth)</a>
@@ -67,31 +69,34 @@
     <tbody>
         @foreach (var item in Model.Employees)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmployeeID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameEmpl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SurnameEmpl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MiddlenameEmpl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Patronymic)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateofBirth)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurnameEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddlenameEmpl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofBirth)
+            </td>
+            @if (!User.IsInRole("user"))
+            {
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.EmployeeID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.EmployeeID">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.EmployeeID">Delete</a>
                 </td>
-            </tr>
+            }
+        </tr>
         }
     </tbody>
 </table>

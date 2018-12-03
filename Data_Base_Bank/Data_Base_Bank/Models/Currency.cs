@@ -13,6 +13,7 @@ namespace Data_Base_Bank.Models
         public int CurrencyID { get; set; }
         [Display(Name ="Имя валюты")]
         [Required]
+        [RegularExpression(@"^[a-zA-Zа-яА-Я]+$", ErrorMessage = "Некорректное название валюты")]
         public string NameCurrency { get; set; }
         [Display(Name ="Обменный курс")]
         [Required(ErrorMessage = "Не правильно введено поле")]

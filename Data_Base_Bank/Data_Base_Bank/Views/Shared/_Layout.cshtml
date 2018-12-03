@@ -30,12 +30,31 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Currencies" asp-action="Index">Currencies</a></li>
-                    <li><a asp-area="" asp-controller="Depositors" asp-action="Index">Depositors</a></li>
-                    <li><a asp-area="" asp-controller="Employees" asp-action="Index">Employees</a></li>
-                    <li><a asp-area="" asp-controller="Typesdeposits" asp-action="Index">Typesdeposits</a></li>
-                    <li><a asp-area="" asp-controller="Deposits" asp-action="Index">Deposits</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Users" asp-action="Index">Users</a></li>
+                            <li><a asp-area="" asp-controller="Roles" asp-action="Index">Roles</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Currencies" asp-action="Index">Currencies</a></li>
+                            <li><a asp-area="" asp-controller="Depositors" asp-action="Index">Depositors</a></li>
+                            <li><a asp-area="" asp-controller="Employees" asp-action="Index">Employees</a></li>
+                            <li><a asp-area="" asp-controller="Typesdeposits" asp-action="Index">Typesdeposits</a></li>
+                            <li><a asp-area="" asp-controller="Deposits" asp-action="Index">Deposits</a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Вход</a></li>
+                    }
                 </ul>
             </div>
         </div>

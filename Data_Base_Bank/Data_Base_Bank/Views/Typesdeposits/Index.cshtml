@@ -7,10 +7,12 @@
 }
 
 <h2>Typedeposit</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (!User.IsInRole("user"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form method="get">
     <div class="form-inline">
         <label class="control-label">Тип вклада: </label>
@@ -59,31 +61,34 @@
     <tbody>
         @foreach (var item in Model.Typedeposits)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TypedepositID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Minimumtermofdeposit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Minimumdepositamount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Interestrate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Additionalconditions)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.TypedepositID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.TypedepositID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.TypedepositID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypedepositID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimumtermofdeposit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimumdepositamount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Interestrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Additionalconditions)
+            </td>
+            @if (!User.IsInRole("user"))
+                {
+                    <td>
+                     <a asp-action="Edit" asp-route-id="@item.TypedepositID">Edit</a> |
+                     <a asp-action="Details" asp-route-id="@item.TypedepositID">Details</a> |
+                     <a asp-action="Delete" asp-route-id="@item.TypedepositID">Delete</a>
+                    </td>
+                }    
+        </tr>
         }
     </tbody>
 </table>

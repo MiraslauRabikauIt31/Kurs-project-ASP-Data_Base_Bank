@@ -7,17 +7,19 @@
 }
 
 <h2>Currencies</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (!User.IsInRole("user"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
 <form method="get">
     <div class="form-inline">
         <label class="control-label">Валюта: </label>
         @Html.TextBox("type", Model.FilterViewModel.SelectedType, htmlAttributes: new { @class = "form-control" })
         <label class="control-label">Обменный курс: </label>
         @Html.TextBox("exchangerate", Model.FilterViewModel.Selectedexchangerate, htmlAttributes: new { @class = "form-control" })
-        <input type="submit" value="Фильтр" class="btn-default"/>
+        <input type="submit" value="Фильтр" class="btn-default" />
     </div>
 </form>
 <table class="table">
@@ -36,7 +38,7 @@
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.ExchangerateSort)"
                    asp-route-type="@(Model.FilterViewModel.SelectedType)"
-                   asp-route-exchangerate="@(Model.FilterViewModel.Selectedexchangerate)">@Html.DisplayNameFor(model => model.Currency.Exchangerate)</a>       
+                   asp-route-exchangerate="@(Model.FilterViewModel.Selectedexchangerate)">@Html.DisplayNameFor(model => model.Currency.Exchangerate)</a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.DateSort)"
@@ -49,29 +51,32 @@
     <tbody>
         @foreach (var item in Model.Currencies)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CurrencyID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NameCurrency)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Exchangerate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.date_)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCurrency)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exchangerate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_)
+            </td>
+            @if (!User.IsInRole("user"))
+            {
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.CurrencyID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.CurrencyID">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.CurrencyID">Delete</a>
                 </td>
-            </tr>
+            }
+        </tr>
         }
     </tbody>
 </table>
-<page-link page-model="Model.PageViewModel" page-action="Index" 
-page-url-type="@(Model.FilterViewModel.SelectedType)"
-page-url-exchangerate="@(Model.FilterViewModel.Selectedexchangerate)"
-page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-type="@(Model.FilterViewModel.SelectedType)"
+           page-url-exchangerate="@(Model.FilterViewModel.Selectedexchangerate)"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>

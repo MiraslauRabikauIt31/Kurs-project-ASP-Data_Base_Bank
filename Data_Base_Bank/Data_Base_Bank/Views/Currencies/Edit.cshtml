@@ -1,34 +1,60 @@
 ﻿@model Data_Base_Bank.Models.Currency
+
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>
-    <a asp-area="" asp-controller="Currencies" asp-action="Index">Back</a>
-</h3>
-<h2>Edit Currency № @Model.CurrencyID</h2>
-@using (Html.BeginForm("Edit", "Currencies", FormMethod.Post))
-{
-    <fieldset>
-        @Html.HiddenFor(c => c.CurrencyID)
-        <p>
-            @Html.LabelFor(c => c.NameCurrency, "Имя валюты")
-            <br />
-            @Html.EditorFor(c => c.NameCurrency)
-        </p>
-        <p>
-            @Html.LabelFor(c => c.Exchangerate, "Обменный курс")
-            <br />
-            @Html.EditorFor(c => c.Exchangerate)
-        </p>
-        <p>
-            @Html.LabelFor(c => c.date_, "Дата")
-            <br />
-            @Html.EditorFor(c => c.date_)
-        </p>
-        <p>
-            <input type="submit" value="Изменить"/>
-        </p>
-    </fieldset>
-}
 
+<h2>Edit</h2>
+
+<h4>Currency</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CurrencyID" class="control-label"></label>
+                <input asp-for="CurrencyID" class="form-control" readonly />
+                <span asp-validation-for="CurrencyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameCurrency" class="control-label"></label>
+                <input asp-for="NameCurrency" class="form-control" />
+                <span asp-validation-for="NameCurrency" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exchangerate" class="control-label"></label>
+                <input asp-for="Exchangerate" class="form-control" />
+                <span asp-validation-for="Exchangerate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date_" class="control-label"></label>
+                <input asp-for="date_" class="form-control" />
+                <span asp-validation-for="date_" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // переопределение валидации на стороне клиента
+        $.validator.methods.range = function (value, element, param) {
+            var globalizedValue = value.replace(",", ".");
+            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+        }
+
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+        }
+    </script>
+}
